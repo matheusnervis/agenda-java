@@ -3,7 +3,7 @@ package model;
 public class Contact {
 	
 	// atributos de um contato
-	private String nome;
+	private String name;
 	private String fone;
 	private String email;
 	
@@ -29,17 +29,17 @@ public class Contact {
 	
 	public void clean() {
 		// altera para null a todos os atributos do objeto 
-		nome = null;
+		name = null;
 		fone = null;
 		email = null;
 	}
 
 	public String getNome() {
-		return nome;
+		return name;
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.name = nome;
 	}
 
 	public String getFone() {
@@ -60,7 +60,7 @@ public class Contact {
 	
 	@Override
 	public String toString() {
-		return "Contato(Nome: "+nome+"; Fone: "+fone+"; E-mail: "+email+")";
+		return "Contato(Nome: "+name+"; Fone: "+fone+"; E-mail: "+email+")";
 	}
 
 	@Override
@@ -68,7 +68,7 @@ public class Contact {
 		final int prime = 31;
 		int result = 1;
 		
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		
 		return result;
 	}
@@ -83,10 +83,10 @@ public class Contact {
 			return false;
 		
 		Contact other = (Contact) obj;
-		if (nome == null) {
-			if (other.nome != null)
+		if (name == null) {
+			if (other.name != null)
 				return false;
-		} else if (!nome.equals(other.nome))
+		} else if (!name.equals(other.name))
 			return false;
 		
 		return true;

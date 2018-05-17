@@ -1,4 +1,6 @@
-package model;
+package test;
+
+import model.Agenda;
 
 public class AgendaTest {
 	public static void main(String[] args) {

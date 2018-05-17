@@ -5,69 +5,87 @@ import java.util.List;
 
 public class Agenda {
 	
-	private static List<Contato> contatos;
+	private List<Contact> contacts = new ArrayList<Contact>();
 	
-	public static void main(String[] args) {
-		contatos = new ArrayList<Contato>();
-		
-		add("Joao", "9000-0000", "j@h.com");
-		add("Luc", "8000-0000", "l@h.com");
-		add("Naruto", "7000-0000", "n@h.com");
-		add("Goku", "99000-0666", "g@h.com");
-		
-		for (Contato contato : contatos) {
-			System.out.println(contato);
+	public void add(String nome, String fone, String email) {
+		contacts.add(new Contact(nome, fone, email));
+	}
+	
+	public void remove(String nome) {
+		contacts.remove(indexOf(nome));
+	}
+	
+	public int indexOf(Contact contact) {
+		return contacts.indexOf(contact);
+	}
+	
+	public int indexOf(String nome) {
+		return contacts.indexOf(new Contact(nome));
+	}
+	
+	public Contact get(String nome) {
+		return contacts.get(indexOf(nome));
+	}
+	
+	public Contact getByFone(String fone) {
+		for (Contact contact : contacts) {
+			if(contact.getFone().equals(fone))
+				return contact;
 		}
-		System.out.println("\n\n");
 		
-		update(contatos.indexOf(new Contato("Joao")),
-				"Joao K", "99000-1234", "j@hot.com");
-		update(contatos.indexOf(new Contato("Luc")),
-				"Luc J", "99000-1234", "l@hot.com");
-		update(contatos.indexOf(new Contato("Naruto")),
-				"Naruto L", "99000-1234", null);
+		return null;
+	}
+	
+	public List<Contact> getByFoneAll(String fone) {
+		List<Contact> resultado = new ArrayList<Contact>();
 		
-		for (Contato contato : contatos) {
-			System.out.println(contato);
+		for (Contact contact : contacts) {
+			if(contact.getFone().equals(fone))
+				resultado.add(contact);
 		}
-		System.out.println("\n\n");
 		
-		remove("Goku");
-		
-		for (Contato contato : contatos) {
-			System.out.println(contato);
+		return resultado;
+	}
+	public Contact getByEmail(String email) {
+		for (Contact contact : contacts) {
+			if(contact.getEmail().equals(email))
+				return contact;
 		}
-	}
-	
-	public static void add(String nome, String fone, String email) {
-		contatos.add(new Contato(nome, fone, email));
-	}
-	
-	public static void remove(String nome) {
-		contatos.remove(contatos.indexOf(new Contato(nome)));
-	}
-	
-	public static boolean contains(String nome) {
-		return contatos.contains(new Contato(nome));
-	}
-	
-	public static void update(Contato contato, String nome, String fone, String email) {
-		update(contatos.indexOf(contato), nome, fone, email);
-	}
-	
-	public static void update(String nomeAtual, String nome, String fone, String email) {
-		update(contatos.indexOf(new Contato(nomeAtual)), nome, fone, email);
-	}
-	
-	public static void update(int index, String nome, String fone, String email) {
-		Contato contato = contatos.get(index);
 		
-		if (nome != null)
-			contato.setNome(nome);
-		if (fone != null)
-			contato.setFone(fone);
-		if (email != null)
-			contato.setEmail(email);
+		return null;
+	}
+	
+	public List<Contact> getByEmailAll(String email) {
+		List<Contact> resultado = new ArrayList<Contact>();
+		
+		for (Contact contact : contacts) {
+			if(contact.getFone().equals(email))
+				resultado.add(contact);
+		}
+		
+		return resultado;
+	}
+	
+	public boolean contains(String nome) {
+		return contacts.contains(new Contact(nome));
+	}
+	
+	public void update(Contact contact, String nome, String fone, String email) {
+		update(indexOf(contact), nome, fone, email);
+	}
+	
+	public void update(String nomeAtual, String nome, String fone, String email) {
+		update(get(nomeAtual), nome, fone, email);
+	}
+	
+	public void update(int index, String nome, String fone, String email) {
+		contacts.get(index).update(nome, fone, email);
+	}
+	
+	public void print() {
+		for (Contact contact : contacts) {
+			System.out.println(contact);
+		}
 	}
 	
 }

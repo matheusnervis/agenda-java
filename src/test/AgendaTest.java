@@ -2,12 +2,15 @@ package test;
 
 import model.Agenda;
 
+
 public class AgendaTest {
 	public static void main(String[] args) {
+		//criando uma instancia da classe Agenda
 		Agenda a = new Agenda();
+		//String para separar as partes impressas
 		String sp = "------------------------------------------------------\n"
 				+"------------------------------------------------------\n";
-
+		//adicionando novos contatos a agenda
 		System.out.println("Adicionando Contatos...");
 		a.add("Joao", "9000-0000", "j@h.com");
 		a.add("Maria", "8000-0000", "m@h.com");

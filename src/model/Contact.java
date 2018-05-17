@@ -2,18 +2,23 @@ package model;
 
 public class Contact {
 	
+	// atributos de um contato
 	private String nome;
 	private String fone;
 	private String email;
 	
 	public Contact(String nome) {
+		// cria um contato com apenas o nome preenchido
 		update(nome, null, null);
 	}
 	
 	public Contact(String nome, String fone, String email) {
+		// cria um contato e atualiza os atributos
 		update(nome, fone, email);
 	}
 	public void update(String nome, String fone, String email) {
+		// se os valores forem passados como null, os valores anteriores seram conservados
+		// assim nao eh necessario repassar um valor que nao precisa ser alterado
 		if (nome != null)
 			setNome(nome);
 		if (fone != null)
@@ -23,6 +28,7 @@ public class Contact {
 	}
 	
 	public void clean() {
+		// altera para null a todos os atributos do objeto 
 		nome = null;
 		fone = null;
 		email = null;
